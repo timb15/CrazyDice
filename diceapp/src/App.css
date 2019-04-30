@@ -1,0 +1,288 @@
+
+body {
+    background-color: black;
+    text-align: center;
+}
+
+h1,
+h2 {
+    margin: 0;
+    padding: 3px;
+}
+
+.container {
+    display: inline-flex;
+    width: 1080px;
+    height: 720px;
+    background: gold url("../src/img/wood.jpg") center;
+    margin-top: 50px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    z-index: -1;
+}
+
+/* startScreen styles */
+.start {
+  color: white;
+}
+.game-title {
+    font-size: 10em;
+    margin-top: 200px;
+}
+
+.start-button {
+    background-color: darkblue;
+    color: white;
+    margin: 50px 300px;
+    border: solid 5px white;
+    border-radius: 20%;
+    text-align: center;
+    font-size: 2em;
+    box-shadow: 10px 10px 10px black;
+}
+
+.how-to {
+    color: white;
+    font-size: 1.5em;
+    margin:  0 100px;
+}
+
+/* characterSelect and nameEntry styles */
+
+.player-select-title {
+    margin: 20px 100px 0;
+    font-size: 2em;
+    color: black;
+}
+
+.name-input {
+    display: flex;
+    margin: 0 300px;
+    height: 100px;
+    width: 500px;;
+    box-shadow: 10px 10px 10px black;
+    font-size: 3em;
+    background-color: beige;
+    text-align: center;
+}
+
+.ok-btn {
+    background-color: darkblue;
+    color: white;
+    margin: 50px 300px;
+    width: 200px;
+    height: 75px;
+    border: solid 5px white;
+    border-radius: 20%;
+    text-align: center;
+    font-size: 2em;
+    box-shadow: 10px 10px 10px black;
+}
+
+.char-container {
+    display: flex;
+    background-color: transparent;
+    margin: -50px 50px;
+    width: 700px;
+    height: 500px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.character {
+     margin-top: 10px;
+    display: flex;
+    height: 200px;
+    width: 200px;
+    box-shadow: 10px 10px 10px black;
+    background-color: beige;
+    justify-content: center;
+}
+
+/* gameboard styles */
+.title {
+    font-size: 3em;
+    padding: 0;
+}
+.player-div {
+    display: inline-flex;
+    width: 250px;
+    height: 300px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.player-name {
+    display: inline-block;
+    margin: 3px;
+    font-size: 3em;
+}
+
+.player-icon {
+    margin: 10px 50px;
+    display: flex;
+    height: 100px;
+    width: 100px;
+    box-shadow: 10px 10px 10px black;
+    background-color: beige;
+    justify-content: center;
+}
+
+.scores {
+    display: flex;
+    height: 75px;
+    width: 150px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.scorecard-link {
+    margin: 0 50px;
+    font-size: 2em;
+    border-radius: 10%;
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    box-shadow: 10px 10px 10px black;
+}
+
+.scorecard-link-disabled {
+    margin: 0 50px;
+    font-size: 2em;
+    border-radius: 10%;
+    background-color: goldenrod;
+    color: grey;
+    border: none;
+    box-shadow: 10px 10px 10px black;
+}
+
+.scorecard-link:hover {
+    background-color: black;
+    color: goldenrod;
+}
+
+.roll-btn {
+    background-color: goldenrod;
+    color: white;
+    margin: 0 300px;
+    font-size: 2em;
+    width: 200px;
+    height: 75px;
+    border-radius: 5%;
+    border: none;
+    box-shadow: 10px 10px 10px black;
+}
+
+.roll-btn:hover {
+    background-color: black;
+    color: goldenrod;
+}
+
+.dice {
+    display: flex;
+    width: 680px;
+    height: 130px;
+    justify-content: space-evenly;
+}
+
+.dye {
+    width: 100px;
+    height: 100px;
+    border-radius: 16%;
+    box-shadow: 10px 10px 10px black;
+    background-color: white;
+}
+
+/* Scorecard styles */
+.scorecard-container {
+  display: flex;
+  width: 1080px;
+  height: 720px;
+  position: relative;
+  left: 0;
+  top: -505px;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  z-index: 1;
+}
+.scorecard {
+    display: flex;
+    margin-top: 50px;
+    height: 600px;
+    width: 400px;
+    background-color: blanchedalmond;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: solid 10px goldenrod;
+    box-shadow: 10px 10px 10px black;
+}
+
+
+.scoreline {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5px;
+    width: 350px;
+    height: 30px;
+    justify-content: space-between;
+    background-color: goldenrod;
+}
+
+.scoreline:hover {
+    background-color: black;
+    color: goldenrod;
+}
+
+.score-title {
+    display: flex;
+    font-size: 1.5em;
+    margin-left: 5px;
+}
+
+.score-input {
+    display: flex;
+    margin-top: 4px;
+    margin-right: 5px;
+    text-align: center;  
+}
+
+.total {
+    border: solid 2px black;
+}
+
+.save-score {
+    display: flex;
+    width: 200px;
+    height: 150px;
+    margin-top: 300px;
+    background-color: blanchedalmond;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: solid 10px goldenrod;
+    box-shadow: 10px 10px 10px black;
+}
+
+.dice-scorecard {
+    display: flex;
+    width: 350px;
+    height: 30px;
+    justify-content: space-evenly;
+}
+
+.dye-scorecard {
+    width: 30px;
+    height: 30px;
+    border-radius: 16%;
+    box-shadow: 3px 3px 3px black;
+    background-color: white;
+}
+
+.save-button {
+    margin:  0 20px;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 10%;
+    background-color: goldenrod;
+    font-size: 1em;
+    font-style: italic;
+    border: none;
+}
