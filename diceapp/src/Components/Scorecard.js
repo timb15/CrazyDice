@@ -16,22 +16,22 @@ class Scorecard extends Component {
   render() {
     let dice = []
     for (var dye in this.props.dice) {
-      dice.push(<div className="dye-scorecard"><img src={require(`../img/${this.props.dice[dye].num}_${this.props.dice[dye].color}.svg`)} alt="dye" /></div>)
+      dice.push(<div key={dye} className="dye-scorecard"><img src={require(`../img/${this.props.dice[dye].num}_${this.props.dice[dye].color}.svg`)} alt="dye" /></div>)
     }
 
     let scorelines = [];
-    for (var score in this.props.scorecard) {
-      let a = this.props.scorecard[score].temp;
-      let b = score;
+    for (var scoreName in this.props.scorecard) {
+      let scr = this.props.scorecard[scoreName].temp;
+      let scrName = scoreName;
       scorelines.push(
-        (this.props.scorecard[score].actual === null)
-          ? <div className="scoreline" onClick={() => this.setScoreToSave(a, b)}>
-            <span className="score-title">{score.toUpperCase()}:</span>
-            <span className="score-input">{this.props.scorecard[score].temp}</span>
+        (this.props.scorecard[scoreName].actual === null)
+          ? <div key={scoreName} className="scoreline" onClick={() => this.setScoreToSave(scr, scrName)}>
+            <span className="score-title">{scoreName.toUpperCase()}:</span>
+            <span className="score-input">{this.props.scorecard[scoreName].temp}</span>
           </div>
-          : <div className="scoreline" style={{ color: "goldenrod", backgroundColor: "black" }}>
-            <span className="score-title">{score.toUpperCase()}:</span>
-            <span className="score-input">{this.props.scorecard[score].actual}</span>
+          : <div key={`${scoreName}black`} className="scoreline" style={{ color: "goldenrod", backgroundColor: "black" }}>
+            <span className="score-title">{scoreName.toUpperCase()}:</span>
+            <span className="score-input">{this.props.scorecard[scoreName].actual}</span>
           </div>)
     }
     return (
@@ -49,7 +49,7 @@ class Scorecard extends Component {
               </div>
               <button className="save-button" onClick={() => this.props.close()}>CLOSE</button>
             </div>
-            : <div className="save-score">
+            : <div className="save-score-container">
               <h1>TAKE {this.state.scoreToSave} POINTS?</h1>
               <button className="save-button" onClick={() => {
                 this.props.saveScore(this.state.scoreName, this.state.scoreToSave);

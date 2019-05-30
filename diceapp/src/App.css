@@ -12,10 +12,12 @@ h2 {
 
 .container {
     display: inline-flex;
+    position: absolute;
     width: 1080px;
-    height: 720px;
+    height: 550px;
+    left: 8%;
+    top: 25px;
     background: gold url("../src/img/wood.jpg") center;
-    margin-top: 50px;
     justify-content: space-around;
     flex-wrap: wrap;
     z-index: -1;
@@ -26,8 +28,9 @@ h2 {
   color: white;
 }
 .game-title {
-    font-size: 10em;
-    margin-top: 200px;
+    margin-top: 50px;
+    width:600px;
+    height: 300px;
 }
 
 .start-button {
@@ -37,21 +40,21 @@ h2 {
     border: solid 5px white;
     border-radius: 20%;
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     box-shadow: 10px 10px 10px black;
 }
 
 .how-to {
-    color: white;
-    font-size: 1.5em;
-    margin:  0 100px;
+    color: black;
+    font-size: 1em;
+    margin:  0 300px;
 }
 
 /* characterSelect and nameEntry styles */
 
 .player-select-title {
     margin: 20px 100px 0;
-    font-size: 2em;
+    font-size: 1.5em;
     color: black;
 }
 
@@ -62,38 +65,38 @@ h2 {
     width: 500px;;
     box-shadow: 10px 10px 10px black;
     font-size: 3em;
-    background-color: beige;
+    background-color: white;
+    border: none;
     text-align: center;
 }
 
 .ok-btn {
-    background-color: darkblue;
+    background-color: goldenrod;
     color: white;
-    margin: 50px 300px;
+    margin: 50px 300px 15px;
+    font-size: 2em;
     width: 200px;
     height: 75px;
-    border: solid 5px white;
-    border-radius: 20%;
-    text-align: center;
-    font-size: 2em;
+    border-radius: 5%;
+    border: none;
     box-shadow: 10px 10px 10px black;
 }
 
 .char-container {
+    margin-bottom: 20px;
     display: flex;
     background-color: transparent;
+    width: 600px;
     margin: -50px 50px;
-    width: 700px;
-    height: 500px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .character {
-     margin-top: 10px;
+    margin: 0 20px;
     display: flex;
-    height: 200px;
-    width: 200px;
+    height: 125px;
+    width: 125px;
     box-shadow: 10px 10px 10px black;
     background-color: beige;
     justify-content: center;
@@ -101,8 +104,10 @@ h2 {
 
 /* gameboard styles */
 .title {
-    font-size: 3em;
-    padding: 0;
+    margin-top: 50px;
+    width: 400px;
+    height: 200px;
+    justify-content: center;
 }
 .player-div {
     display: inline-flex;
@@ -164,7 +169,7 @@ h2 {
 .roll-btn {
     background-color: goldenrod;
     color: white;
-    margin: 0 300px;
+    margin: 0 300px 15px;
     font-size: 2em;
     width: 200px;
     height: 75px;
@@ -173,7 +178,8 @@ h2 {
     box-shadow: 10px 10px 10px black;
 }
 
-.roll-btn:hover {
+.roll-btn:hover,
+.ok-btn:hover {
     background-color: black;
     color: goldenrod;
 }
@@ -197,19 +203,18 @@ h2 {
 .scorecard-container {
   display: flex;
   width: 1080px;
-  height: 720px;
-  position: relative;
+  height: 550px;
+  position: absolute;
   left: 0;
-  top: -505px;
+  top: 0;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   z-index: 1;
 }
 .scorecard {
     display: flex;
-    margin-top: 50px;
-    height: 600px;
-    width: 400px;
+    height: 530px;
+    width: 350px;
     background-color: blanchedalmond;
     justify-content: center;
     flex-wrap: wrap;
@@ -222,8 +227,8 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     margin-left: 5px;
-    width: 350px;
-    height: 30px;
+    width: 330px;
+    height: 25px;
     justify-content: space-between;
     background-color: goldenrod;
 }
@@ -235,13 +240,12 @@ h2 {
 
 .score-title {
     display: flex;
-    font-size: 1.5em;
+    font-size: 1em;
     margin-left: 5px;
 }
 
 .score-input {
     display: flex;
-    margin-top: 4px;
     margin-right: 5px;
     text-align: center;  
 }
@@ -250,11 +254,11 @@ h2 {
     border: solid 2px black;
 }
 
-.save-score {
+.save-score-container {
     display: flex;
+    margin-top: 200px;
     width: 200px;
     height: 150px;
-    margin-top: 300px;
     background-color: blanchedalmond;
     justify-content: center;
     flex-wrap: wrap;
@@ -264,21 +268,43 @@ h2 {
 
 .dice-scorecard {
     display: flex;
-    width: 350px;
+    width: 330px;
     height: 30px;
     justify-content: space-evenly;
 }
 
 .dye-scorecard {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 16%;
     box-shadow: 3px 3px 3px black;
     background-color: white;
 }
 
 .save-button {
-    margin:  0 20px;
+    margin:  0 20px 15px;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 10%;
+    background-color: goldenrod;
+    font-size: 1em;
+    font-style: italic;
+    border: none;
+}
+
+.win-container {
+    display: flex;
+    margin-top: 200px;
+    width: 300px;
+    height: 150px;
+    background-color: blanchedalmond;
+    flex-wrap: wrap;
+    border: solid 10px goldenrod;
+    box-shadow: 10px 10px 10px black;
+    justify-content: space-evenly;
+}
+
+.win-button {
+    margin:  0 50px 15px;
     box-shadow: 5px 5px 5px black;
     border-radius: 10%;
     background-color: goldenrod;

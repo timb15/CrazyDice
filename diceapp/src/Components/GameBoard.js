@@ -4,6 +4,7 @@ import Dice from './Dice';
 import Scorecard from './Scorecard';
 import WinScreen from './WinScreen';
 
+const logo = require(`../img/logo.svg`);
 
 class GameBoard extends Component {
   constructor(props) {
@@ -42,14 +43,14 @@ class GameBoard extends Component {
       player1Score: 0,
       player2Score: 0,
       diceNums: {
-        dye1: { num: 1, color: "red" },
-        dye2: { num: 1, color: "red" },
-        dye3: { num: 1, color: "red" },
-        dye4: { num: 1, color: "red" },
-        dye5: { num: 1, color: "red" }
+        dye1: { num: 0, color: "red" },
+        dye2: { num: 0, color: "red" },
+        dye3: { num: 0, color: "red" },
+        dye4: { num: 0, color: "red" },
+        dye5: { num: 0, color: "red" }
       },
       rollCount: 0,
-      turnCount: 9
+      turnCount: 0
     };
   }
 
@@ -86,12 +87,15 @@ class GameBoard extends Component {
       diceNums.dye4.num,
       diceNums.dye5.num
     ]
-    //sets sore for strait
-    let tempStrait = this.compareArrays(diceArray.sort(), [1, 2, 3, 4, 5]) + this.compareArrays(diceArray.sort(), [2, 3, 4, 5, 6])
     //resets temp scores
     for (var key in tempScorecard) {
       tempScorecard[key].temp = 0;
     }
+    //sets sore for strait
+    let tempStrait = this.compareArrays(diceArray.sort(), [1, 2, 3, 4, 5]) + this.compareArrays(diceArray.sort(), [2, 3, 4, 5, 6]);
+    tempScorecard.strait.temp = tempStrait;
+
+    //sets each score for 1 to 6's
     diceArray.forEach(num => {
       if (num === 1) tempScorecard.one.temp += 1;
       if (num === 2) tempScorecard.two.temp += 2;
@@ -116,14 +120,13 @@ class GameBoard extends Component {
     if (tempScorecard.six.temp >= 24) tempScorecard.fourOAK.temp = 24;
 
     //check for crazydice
-    if (tempScorecard.one.temp === 5) tempScorecard.crazy.temp = 50;
-    if (tempScorecard.two.temp === 10) tempScorecard.crazy.temp = 50;
-    if (tempScorecard.three.temp === 15) tempScorecard.crazy.temp = 50;
-    if (tempScorecard.four.temp === 20) tempScorecard.crazy.temp = 50;
-    if (tempScorecard.five.temp === 25) tempScorecard.crazy.temp = 50;
-    if (tempScorecard.six.temp === 30) tempScorecard.crazy.temp = 50;
+    if (tempScorecard.one.temp === 5 ||
+      tempScorecard.two.temp === 10 ||
+      tempScorecard.three.temp === 15 ||
+      tempScorecard.four.temp === 20 ||
+      tempScorecard.five.temp === 25 ||
+      tempScorecard.six.temp === 30) tempScorecard.crazy.temp = 50;
 
-    tempScorecard.strait.temp = tempStrait;
     this.setState({ [scorecard]: tempScorecard });
   }
 
@@ -145,12 +148,14 @@ class GameBoard extends Component {
   //toggles if they dice can be rolled or not
   toggleDye = (dyeNum) => {
     let newDice = { ...this.state.diceNums };
-    if (newDice[dyeNum].color === "red") {
-      newDice[dyeNum].color = "black";
-    } else {
-      newDice[dyeNum].color = "red";
+    if (newDice[dyeNum].num !== 0) {
+      if (newDice[dyeNum].color === "red") {
+        newDice[dyeNum].color = "black";
+      } else {
+        newDice[dyeNum].color = "red";
+      }
+      this.setState({ diceNums: newDice });
     }
-    this.setState({ diceNums: newDice });
   }
   //closes active scorecard
   closeScoreCard = () => {
@@ -177,11 +182,11 @@ class GameBoard extends Component {
   resetDice = () => {
     this.setState({
       diceNums: {
-        dye1: { num: 1, color: "red" },
-        dye2: { num: 1, color: "red" },
-        dye3: { num: 1, color: "red" },
-        dye4: { num: 1, color: "red" },
-        dye5: { num: 1, color: "red" }
+        dye1: { num: 0, color: "red" },
+        dye2: { num: 0, color: "red" },
+        dye3: { num: 0, color: "red" },
+        dye4: { num: 0, color: "red" },
+        dye5: { num: 0, color: "red" }
       }
     });
   }
@@ -214,16 +219,62 @@ class GameBoard extends Component {
     this.resetDice();
   }
 
+  checkWin = () => {
+    if (this.state.player1Score === this.state.player2Score) return "tie";
+    if (this.state.player1Score > this.state.player2Score) {
+      return this.props.player1.name;
+    } else {
+      return this.props.player2.name;
+    }
+  }
+
+  resetGame = () => {
+    this.setState({
+      player1Active: true,
+      player2Active: false,
+      scorecard1Active: false,
+      scorecard2Active: false,
+      player1Score: 0,
+      player2Score: 0,
+      player1Scorecard: {
+        one: { temp: 0, actual: null },
+        two: { temp: 0, actual: null },
+        three: { temp: 0, actual: null },
+        four: { temp: 0, actual: null },
+        five: { temp: 0, actual: null },
+        six: { temp: 0, actual: null },
+        strait: { temp: 0, actual: null },
+        threeOAK: { temp: 0, actual: null },
+        fourOAK: { temp: 0, actual: null },
+        crazy: { temp: 0, actual: null },
+      },
+      player2Scorecard: {
+        one: { temp: 0, actual: null },
+        two: { temp: 0, actual: null },
+        three: { temp: 0, actual: null },
+        four: { temp: 0, actual: null },
+        five: { temp: 0, actual: null },
+        six: { temp: 0, actual: null },
+        strait: { temp: 0, actual: null },
+        threeOAK: { temp: 0, actual: null },
+        fourOAK: { temp: 0, actual: null },
+        crazy: { temp: 0, actual: null },
+      },
+      rollCount: 0,
+      turnCount: 0
+    });
+  }
+
   render() {
     return (
       <div className="container">
         {
           (this.state.turnCount === 10)
-            ? <WinScreen player={(this.state.player1Score > this.state.player2Score) ? this.props.player1.name : this.props.player2.name} history={this.props.history} />
+            ? <WinScreen player={this.checkWin()} reset={this.resetGame} history={this.props.history} />
             : <React.Fragment>
-              <Player playerNum={1} playerName={this.props.player1.name} character={this.props.player1.char} scorecardActive={this.activateScorecard} active={this.state.player1Active} score={this.state.player1Score} />
-              <h1 className="title">Crazy Dice</h1>
-              <Player playerNum={2} playerName={this.props.player2.name} character={this.props.player2.char} scorecardActive={this.activateScorecard} active={this.state.player2Active} score={this.state.player2Score} />
+              <Player playerNum={1} playerName={this.props.player1.name} character={this.props.player1.char} scorecardActive={this.activateScorecard} active={this.state.player1Active} score={this.state.player1Score} wins={this.state.p1Wins} />
+              <div className="title"><img src={logo} alt="game logo" /></div>
+              <Player playerNum={2} playerName={this.props.player2.name} character={this.props.player2.char} scorecardActive={this.activateScorecard} active={this.state.player2Active} score={this.state.player2Score} wins={this.state.p2Wins} />
               {
                 (this.state.player1Active)
                   ? (this.state.rollCount === 3)

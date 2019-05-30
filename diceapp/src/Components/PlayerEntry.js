@@ -24,7 +24,10 @@ class PlayerEntry extends Component {
     return (
       <div className="container">
         <div className="player-select-title">
-          <h1>{this.props.player}</h1>
+          <h1>{(this.props.player === "player1")
+            ? "Player 1"
+            : "Player 2"
+          }</h1>
           <h1>Enter Your Name</h1>
         </div>
         <form onSubmit={(e) => this.handleSubmit(e)}>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Player = ({ playerNum, playerName, character, scorecardActive, active, score }) => {
+const Player = ({ playerNum, playerName, character, scorecardActive, active, score, wins }) => {
   let name = "";
   if (playerName === "player1") {
     name = "PLAYER 1"
@@ -20,7 +20,6 @@ const Player = ({ playerNum, playerName, character, scorecardActive, active, sco
       }
       <div className="scores">
         <h1>Score: {score}</h1>
-        <h2>Wins: 0</h2>
       </div>
     </div>
   )

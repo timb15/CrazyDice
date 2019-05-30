@@ -14,14 +14,10 @@ class App extends Component {
       player1: {
         name: "player1",
         char: require("./img/monster_purple.svg"),
-        score: 0,
-        wins: 0
       },
       player2: {
         name: "player2",
         char: require("./img/monster_pink.svg"),
-        score: 0,
-        wins: 0
       }
     }
 
@@ -48,7 +44,7 @@ class App extends Component {
           <Route exact path="/player2" render={(history) => <PlayerEntry player="player2" addPlayer={this.addPlayerName} history={history} />} />
           <Route exact path="/character1" render={(history) => <CharacterSelect selectChar={this.addPlayerChar} player="player1" playerName={this.state.player1.name} history={history} />} />
           <Route exact path="/character2" render={(history) => <CharacterSelect selectChar={this.addPlayerChar} player="player2" playerName={this.state.player2.name} history={history} />} />
-          <Route exact path="/game" render={(history) => <GameBoard player1={this.state.player1} player2={this.state.player2} history={history} />} />
+          <Route exact path="/game" render={(history) => <GameBoard player1={this.state.player1} player2={this.state.player2} history={history} addWin={this.incrementScore} />} />
         </BrowserRouter>
       </div>
     );
